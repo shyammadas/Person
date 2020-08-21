@@ -6,6 +6,7 @@ import java.util.List;
 
 
 import com.test.webservice.bean.Person;
+import com.test.webservice.bean.PersonException;
 
 
 public class PersonService {
@@ -21,13 +22,7 @@ public class PersonService {
 	   PersonIdMap=new HashMap<Integer,Person>();
 	  // Creating some objects of Person while initializing
 	   
-	  /* List<Address> address = new ArrayList<Address>();
 	   
-	   address.add(new Address(1, "Manikonda", "HYD", "TS", 500089));
-	   address.add(new Address(2, "sec", "HYD", "TS", 500089));
-	   */
-	   
-	  
 	   Person shyam=new Person(1, "madas","shyam","NZB");
 	   Person ram=new Person(2, "abc","ram","HYD");
 	   Person raju=new Person(3, "raju","sss","SEC");
@@ -71,9 +66,12 @@ public class PersonService {
 
 	 }
 	
-	 public void deletePerson(int id)
+	 public void deletePerson(int id) throws PersonException
 	 {
+		 if(PersonIdMap.containsKey(id))
 	  PersonIdMap.remove(id);
+		 else
+			 throw new PersonException("ID is not present");
 	 }
 
 	 public static HashMap<Integer, Person> getPersonIdMap() {

@@ -1,12 +1,15 @@
 package com.test.webservice.bean;
-
+import javax.validation.constraints.Size; 
 
 
 
 public class Person {
 
+	
 	private int id;
+	@Size(min=3,message="name should be more than 3 chars")  
 	private String firstname;
+	@Size(min=3,message="name should be more than 3 chars")  
 	private String lastname;
 	
 	private String address;
